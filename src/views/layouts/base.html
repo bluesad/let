@@ -18,6 +18,9 @@
 	<meta name="keywords" content="" />
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
+	<![endif]-->
 	
 	<link rel="stylesheet" href="/static/css/reset.css?${Filters.version()}">
 	<link rel="stylesheet" href="/static/css/common.css?${Filters.version()}">
@@ -25,14 +28,12 @@
 	<link rel="stylesheet" href="/static/css/flash-messages.css?${Filters.version()}">
 	<link type="text/css" rel="stylesheet" href="/static/css/menu.css" />
 	<link type="text/css" rel="stylesheet" href="/static/css/editTable.css" />
-	<link rel="shortcut icon" href="/static/images/images.ico" type="image/x-icon" />	
-	<link rel="stylesheet" media="all" type="text/css" href="/static/css/jquery-ui-timepicker-addon.css" />
-	<link type="text/css" href="/static/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" />
+	<link rel="shortcut icon" href="/static/images/images.ico" type="image/x-icon" />		
+	<!--link type="text/css" href="/static/css/jquery-ui-1.8.23.custom.css" rel="stylesheet" /-->
 	<link type="text/css" href="/static/css/jquery.ui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" media="all" type="text/css" href="/static/css/jquery-ui-timepicker-addon.css" />
 	
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5-els.js"></script>
-	<![endif]-->
+	
 	<script src="/static/js/whirlwind.js?${Filters.version()}"></script>
 	<script src="/static/js/flash-messages.js?${Filters.version()}"></script>
 	<script src="/static/js/application.js?${Filters.version()}"></script>  
@@ -48,11 +49,13 @@
 	<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>-->
 	<!--<script>window.jQuery || document.write('<script src="/static/js/jquery-1.7.1.min.js"><\/script>')</script>-->
     <script src="/static/js/jquery-1.7.1.min.js"></script>
-    <script type="text/javascript" src="/static/js/menu.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-ui-1.8.23.custom.min.js"></script>
+	
+	<script type="text/javascript" src="/static/js/menu.js"></script>
     <script type="text/javascript" src="/static/js/editTable.js"></script>
     <script type="text/javascript" src="/static/js/jquery-ui-timepicker-addon.js"></script>
 	<script type="text/javascript" src="/static/js/jquery-ui-sliderAccess.js"></script>
-    <script type="text/javascript" src="/static/js/jquery-ui-1.8.23.custom.min.js"></script>
+    
 	${self.scripts()} 
 	<%def name="scripts()"></%def>
 	
