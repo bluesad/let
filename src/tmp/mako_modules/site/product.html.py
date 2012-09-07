@@ -28,7 +28,7 @@ def _mako_generate_namespaces(context):
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
     return runtime._inherit_from(context, u'/layouts/content.html', _template_uri)
-def render_body(context,**pageargs):
+def render_body(context, **pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
@@ -53,14 +53,14 @@ def render_body(context):
         for c in custormers:
             # SOURCE LINE 30
             __M_writer(u'\t\t\t\t')
-            i=1 
+            i = 1 
             
             __M_writer(u'\r\n\t\t\t\t\r\n\t\t\t\t<tr>\r\n\t\t\t\t    <td align="center">')
             # SOURCE LINE 33
             __M_writer(unicode(i))
             __M_writer(u'</td>\r\n\t\t\t\t    ')
             # SOURCE LINE 34
-            i=i+1 
+            i = i + 1 
             
             __M_writer(u'\r\n\t\t\t\t\t<td>')
             # SOURCE LINE 35
@@ -70,7 +70,7 @@ def render_body(context):
             __M_writer(unicode(c['description']))
             __M_writer(u'</td>\r\n\t\t\t\t\t<td>\r\n')
             # SOURCE LINE 38
-            if c['status']==0: 
+            if c['status'] == 0: 
                 # SOURCE LINE 39
                 __M_writer(u'\t\t\t\t\t          \u6fc0\u6d3b\r\n')
                 # SOURCE LINE 40
