@@ -7,9 +7,8 @@
 			</h1>
 		</div>
 		<div id="user-menu">
-			% if is_logged_in :
-				${current_user['_id']} : 
-				<a href="/logout">log-out</a>
+			% if is_logged_in : 
+			${current_user['_id'].strip()} : <a href="/logout">log-out</a>
 			% else :
 				<a href="/login">log-in</a>
 			% endif

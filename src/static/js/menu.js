@@ -10,29 +10,30 @@ $(document).ready(function(){
 			ulNode.css("display","none");
 		}
 		
-		ulNode.show("slow");//normal fast
-		ulNode.hide();
-		ulNode.toggle();
+		//ulNode.show("slow");//normal fast
+		//ulNode.hide();
+		//ulNode.toggle();
 		
-		ulNode.slideDown("slow");
-		ulNode.slideUp;
-		ulNode.slideToggle();
+		//ulNode.slideDown("slow");
+		//ulNode.slideUp;
+		//ulNode.slideToggle();
 		changeIcon($(this));
 	});
-	$(".hmain").hover(function(){
+	/*$(".hmain").hover(function(){
 		$(this).children("ul").slideDown();
 		changeIcon($(this).children("a"));
 	},function(){
 		$(this).children("ul").slideUp();
 		changeIcon($(this).children("a"));
 	});
-	$(".main").hover(function(){
-		$(this).children("ul").slideDown();
+	$(".main").click(function(){
+		if($(this).children("ul").css('display')=='none') $(this).children("ul").slideUp();
+		else $(this).children("ul").slideDown();
 		changeIcon($(this).children("a"));
-	},function(){
+	});*//*,function(){
 		$(this).children("ul").slideUp();
 		changeIcon($(this).children("a"));
-	});
+	});*/
 });
 
 /**

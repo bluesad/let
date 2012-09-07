@@ -5,8 +5,9 @@
 <%def name="body()">
 	<%include file="/shared/flash_messages.html"/>
 	<div id="wrap" role="main">
+		<%include file="/shared/header.html"/>
+		<div class="clear"></div>
 		<div id="main">
-			<%include file="/shared/header.html"/>
 			<div id="content">
 				<div id="content-inner">
 				<%def name="body_content()">
@@ -14,8 +15,8 @@
 				</%def>
 				${body_content()}
 				</div>
-				<ul>
 				% if is_logged_in :
+				<ul>
 				% if current_user['roletype']==2 :
 					<li class="main">
 							<a href="#">运营商</a>
@@ -63,8 +64,8 @@
 						</ul>
 					</li>
 				% endif
-				% endif
 				</ul>
+				% endif
 			</div>
 		</div>
 	</div>

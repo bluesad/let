@@ -28,12 +28,12 @@ import time
 			<td><label for="status" class="status">状态:</label></td>
 			<td>
 				<select id="status" name ="status">
-				% if status == '0':
-					  <option value='0'  selected >激活</option>  
-					  <option value='1' >注销</option> 
+				% if status == 0:
+					  <option value=0  selected >激活</option>  
+					  <option value=1 >注销</option> 
 				% else:
-					  <option value='0'> 激活</option>  
-					  <option value='1' selected >注销</option> 
+					  <option value=0 > 激活</option>  
+					  <option value=1 selected >注销</option> 
 				% endif	  
 				</select>
 			</td>
@@ -50,7 +50,7 @@ import time
 				<th align="center">客户名称</th>
 				<th align="center">描述</th>
 				<th align="center">状态</th>
-				<th align="center">满幅带宽(单位:兆)</th>
+				<th align="center">产品带宽(单位:兆)</th>
 				<th align="center">剩余时间(单位:小时)</th>
 				<th align="center">注册时间</th>	
 				<th align="center">使用起始</th>
@@ -58,7 +58,7 @@ import time
 				<th align="center">操作</th>				
 			</tr>
 			<% i=1 %>
-			% for c in custormers:
+			% for c in paginator.page:
 			<tr>
 				<td align="center">${i}</td>
 				<% i=i+1 %>
@@ -89,7 +89,26 @@ import time
 				</td>
 			</tr>
 			% endfor
+			<br>
 		</tbody>
 	</table>
 </div>
+<div>
+			第 ${paginator.current_page} 页  ｜ 共 ${paginator.page_count}页   
+			
+			<!-- if there is a previous page print a back link -->
+            % if paginator.has_previous:
+                  <a href="${paginator.previous_page_link(request)}"><< back</a>
+            % endif
+
+            <!-- if there is a previous and a next page print a divider -->
+                  % if paginator.has_previous and paginator.has_next:
+                  | 
+            % endif
+
+            <!-- if there is a next page print a next link -->
+            % if paginator.has_next:
+                    <a href="${paginator.next_page_link(request)}">next >></a>
+            % endif
+            </div>
 </%def>
