@@ -4,18 +4,23 @@
 ### Template for content pages
 <%def name="body()">
 	<%include file="/shared/flash_messages.html"/>
+		
+	 
 	<div id="wrap" role="main">
-		<div id="main">
-			<%include file="/shared/header.html"/>
+		<%include file="/shared/header.html"/>
+		
+		<div class="clear" ></div>
+		<div id="main">			
 			<div id="content">
-				<div id="content-inner">
+				<!-- <div id="content-inner"> -->
 				<%def name="body_content()">
 					${next.body()}
 				</%def>
 				${body_content()}
-				</div>
-				<ul>
+			<!-- 	</div> -->
+				
 				% if is_logged_in :
+				<ul>
 				% if current_user['roletype']==2 :
 					<li class="main">
 							<a href="#">运营商</a>
@@ -63,8 +68,8 @@
 						</ul>
 					</li>
 				% endif
-				% endif
 				</ul>
+				% endif
 			</div>
 		</div>
 	</div>
