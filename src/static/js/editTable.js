@@ -11,7 +11,7 @@ $(function(){
 	$("tbody tr:even").css("background-color","#ECE9D8");
 
 	//我们需要找到所有的学号单元格
-	var numTd = $("tbody td:2");
+	var numTd = $("tbody td:eq(2)");
 	//给这些单元格注册鼠标点击的事件
 	numTd.click(function() {	
 		//找到当前鼠标点击的td,this对应的就是响应了click的那个td
