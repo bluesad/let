@@ -38,8 +38,8 @@ $.extend($.ui, { timepicker: { version: "1.0.1" } });
 function Timepicker() {
 	this.regional = []; // Available regional settings, indexed by language code
 	this.regional[''] = { // Default regional settings
-		currentText: '当前日起',
-		closeText: '确认',
+		currentText: '当前日期',
+		closeText: '确定',
 		//ampm: ture,
 		amNames: ['AM', 'A'],
 		pmNames: ['PM', 'P'],
