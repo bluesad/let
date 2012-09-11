@@ -12,7 +12,7 @@ from views.filters import Filters, Cycler
 _exports = ['scripts', 'page_title', 'head_tags']
 
 
-def render_body(context,**pageargs):
+def render_body(context, **pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)

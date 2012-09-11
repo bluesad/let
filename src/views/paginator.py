@@ -3,7 +3,7 @@ from math import ceil
 
 class Paginator(object):
 
-    def __init__(self, collection, page_number=1, limit=20, total=-1):
+    def __init__(self, collection, page_number=1, limit=20, total= -1):
         self.collection = collection
         self.page_number = int(page_number)
         self.limit = int(limit)
@@ -11,7 +11,7 @@ class Paginator(object):
    
     @property
     def page(self):
-        start = (self.page_number-1) * self.limit
+        start = (self.page_number - 1) * self.limit
         end = start + self.limit
         try:
             list = self.collection[start:end]
@@ -43,12 +43,12 @@ class Paginator(object):
     @property
     def previous_page(self):
         if self.has_previous:
-            return self.page_number-1
+            return self.page_number - 1
     
     @property
     def next_page(self):
         if self.has_next:
-            return self.page_number+1
+            return self.page_number + 1
         
     def previous_page_link(self, request):
         return self.__build_url(self.previous_page, request.full_url())
@@ -61,7 +61,7 @@ class Paginator(object):
         
         #check if there is a query string
         if url.find('?') != -1:
-            if re.search(r'page=\d',url) != None:
+            if re.search(r'page=\d', url) != None:
                 page_str = "page=%d" % page_num
                 return re.sub(r'page=\d+', page_str, url)
             else:

@@ -23,12 +23,12 @@ class ProductHandler(BaseHandler):
         custormers = Custormer.getProducts(user)
         
         #page info
-        page = self.get_argument('page',1)
+        page = self.get_argument('page', 1)
         page = page if page >= 1 else 1  
         #get the document count param
-        count = self.get_argument('count',2)
+        count = self.get_argument('count', 2)
         count = count if count >= 1 else 2
-        paginator = Paginator(custormers,page,count,len(custormers))
+        paginator = Paginator(custormers, page, count, len(custormers))
         
         template_values = {}
         template_values['paginator'] = paginator

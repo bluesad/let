@@ -23,7 +23,7 @@ def _mako_generate_namespaces(context):
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
     return runtime._inherit_from(context, u'/layouts/content.html', _template_uri)
-def render_body(context,**pageargs):
+def render_body(context, **pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
@@ -45,7 +45,7 @@ def render_body(context):
         # SOURCE LINE 12
         __M_writer(u'\r\n<div class="form" style="margin:0 auto 0 auto;width: 300px;">\r\n\r\n<form action="/custorm_add" method="post" >\r\n\t<div class="field">\r\n\t\t<fieldset>\r\n\t\t\t<label for="cname" class="label">\u5ba2\u6237\u540d\u79f0:</label>\r\n\t\t\t<div class="input">\r\n\t\t\t\t<input type="text" id="cname" name="cname"/>\r\n\t\t\t</div>\r\n\t\t\t<br>\r\n\t\t\t<label for="description" class="label">\u63cf\u8ff0:</label>\r\n\t\t\t<div class="input">\r\n\t\t\t\t<input type="text" id="description" name="description"/>\r\n\t\t\t</div>\r\n\t\t\t<br>\t\r\n\r\n\t\t\t<label for="begin_at" class="label">\u5f00\u59cb\u65f6\u95f4\uff1a</label>\r\n\t\t\t<div class="input">\r\n\t\t\t\t <input type="datetime" class="datepicker_date" name="begin_at"/>\t\r\n\t\t\t</div>\r\n\t\t\t<br>\t\r\n\r\n\t\t\t<label for="begin_at" class="label">\u7ed3\u675f\u65f6\u95f4\uff1a</label>\r\n\t\t\t<div class="input">\r\n\t\t\t\t <input type="datetime" class="datepicker_date" name="suspended_at"/>\t\r\n\t\t\t</div>\r\n\t\t\t<br>\t\r\n\t\t\t<label for="type" class="label">\u4ea7\u54c1\u5e26\u5bbd:</label>\r\n\t\t\t<div class="input">\r\n\t\t\t\t <select id="type" name ="type">\r\n')
         # SOURCE LINE 43
-        for i in range(1,21):
+        for i in range(1, 21):
             # SOURCE LINE 44
             __M_writer(u'\t\t\t\t\t\t <option value=')
             __M_writer(unicode(i))

@@ -1,7 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/controllers/manage_control.py=UTF-8
-encoding//src/tmp/mako_modules/layouts/base.html.py=utf-8
-encoding//src/tmp/mako_modules/layouts/content.html.py=utf-8
-encoding//src/views/account=UTF-8
-encoding//src/views/account/home.html=UTF-8
+encoding//src/util/comeon.py=utf-8
+encoding//src/util/paramMib.py=utf-8
 encoding/<project>=UTF-8

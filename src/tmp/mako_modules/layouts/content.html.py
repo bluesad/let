@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 7
-_modified_time = 1347030756.401347
+_modified_time = 1347034397.590495
 _template_filename = u'/Users/zongzong/Documents/workspace/mgu/src/views/layouts/content.html'
 _template_uri = u'/layouts/content.html'
 _source_encoding = 'utf-8'
@@ -23,7 +23,7 @@ def _mako_generate_namespaces(context):
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
     return runtime._inherit_from(context, u'/layouts/base.html', _template_uri)
-def render_body(context,**pageargs):
+def render_body(context, **pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
@@ -72,11 +72,11 @@ def render_body(context):
             # SOURCE LINE 19
             __M_writer(u'\t\t\t\t<ul>\n')
             # SOURCE LINE 20
-            if current_user['roletype']==2 :
+            if current_user['roletype'] == 2 :
                 # SOURCE LINE 21
                 __M_writer(u'\t\t\t\t\t<li class="main">\n\t\t\t\t\t\t\t<a href="#">\u8fd0\u8425\u5546</a>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="../manage">\u67e5\u8be2\u7528\u6237</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="../custorm_add">\u6dfb\u52a0\u7528\u6237</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="../pwdchange">\u5bc6\u7801\u91cd\u7f6e</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n')
                 # SOURCE LINE 36
-            elif  current_user['roletype']==3 :
+            elif  current_user['roletype'] == 3 :
                 # SOURCE LINE 37
                 __M_writer(u'\t\t\t\t\t<li class="main">\n\t\t\t\t\t\t<a href="#">\u7528\u6237</a>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="../product">\u4fe1\u606f\u67e5\u8be2</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href="../pwdchange">\u5bc6\u7801\u91cd\u7f6e</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</li>\n')
                 # SOURCE LINE 48

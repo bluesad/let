@@ -76,7 +76,7 @@ import time
 				 
 				<td align="right" >${c['ctype']}</td>
 				<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
-				<%cn=c['_id'] %>
+				<%cn=c['cname'] %>
 				<td align="right">${c['continue_to']}</td>
 				<td>${ct}</td>
 				
@@ -84,7 +84,7 @@ import time
 				<td>${c['suspended_at']}</td>
 				
 				<td align="center">
-					<input type="button" class="button" value="注销" onclick="_do_del(${cn})"  />  
+					<input type="button" class="button" value="注销" onclick="_do_del('${cn}')" 	  />  
 					<input type="button" class="button" value="激活" />
 				</td>
 			</tr>

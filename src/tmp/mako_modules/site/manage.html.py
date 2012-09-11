@@ -4,7 +4,7 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 7
-_modified_time = 1346990643.968934
+_modified_time = 1347034481.016761
 _template_filename = '/Users/zongzong/Documents/workspace/mgu/src/views/site/manage.html'
 _template_uri = '/site/manage.html'
 _source_encoding = 'utf-8'
@@ -28,7 +28,7 @@ def _mako_generate_namespaces(context):
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
     return runtime._inherit_from(context, u'/layouts/content.html', _template_uri)
-def render_body(context,**pageargs):
+def render_body(context, **pageargs):
     context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
@@ -67,7 +67,7 @@ def render_body(context):
         # SOURCE LINE 38
         __M_writer(u'\t\t\t\t</select>\r\n\t\t\t</td>\r\n\t\t\t<td><input type="submit"  class="button" value="\u67e5\u8be2" /></td>\r\n\t\t</tr>\r\n\t</table>\r\n</form>\r\n<br>\r\n<div class="field">\r\n\t<table>\r\n\t\t<tbody>\r\n\t\t\t<tr>\r\n\t\t\t\t<th align="center">\u7f16\u53f7</th>\r\n\t\t\t\t<th align="center">\u5ba2\u6237\u540d\u79f0</th>\r\n\t\t\t\t<th align="center">\u63cf\u8ff0</th>\r\n\t\t\t\t<th align="center">\u72b6\u6001</th>\r\n\t\t\t\t<th align="center">\u4ea7\u54c1\u5e26\u5bbd(\u5355\u4f4d:\u5146)</th>\r\n\t\t\t\t<th align="center">\u5269\u4f59\u65f6\u95f4(\u5355\u4f4d:\u5c0f\u65f6)</th>\r\n\t\t\t\t<th align="center">\u6ce8\u518c\u65f6\u95f4</th>\t\r\n\t\t\t\t<th align="center">\u4f7f\u7528\u8d77\u59cb</th>\r\n\t\t\t\t<th align="center">\u4f7f\u7528\u7ed3\u675f</th>\r\n\t\t\t\t<th align="center">\u64cd\u4f5c</th>\t\t\t\t\r\n\t\t\t</tr>\r\n\t\t\t')
         # SOURCE LINE 60
-        i=1 
+        i = 1 
         
         __M_writer(u'\r\n')
         # SOURCE LINE 61
@@ -78,7 +78,7 @@ def render_body(context):
             __M_writer(unicode(i))
             __M_writer(u'</td>\r\n\t\t\t\t')
             # SOURCE LINE 64
-            i=i+1 
+            i = i + 1 
             
             __M_writer(u'\r\n\t\t\t\t\r\n\t\t\t \r\n\t\t\t\t<td>')
             # SOURCE LINE 67
@@ -88,7 +88,7 @@ def render_body(context):
             __M_writer(unicode(c['description']))
             __M_writer(u'</td>\r\n\t\t\t\t<td>\r\n')
             # SOURCE LINE 70
-            if c['status']==1: 
+            if c['status'] == 1: 
                 # SOURCE LINE 71
                 __M_writer(u'\t\t\t\t\t\t  \u672a\u6fc0\u6d3b\r\n')
                 # SOURCE LINE 72
@@ -106,7 +106,7 @@ def render_body(context):
             
             __M_writer(u'\r\n\t\t\t\t')
             # SOURCE LINE 79
-            cn=c['_id'] 
+            cn = c['cname'] 
             
             __M_writer(u'\r\n\t\t\t\t<td align="right">')
             # SOURCE LINE 80
@@ -120,10 +120,10 @@ def render_body(context):
             __M_writer(u'</td>\r\n\t\t\t\t<td>')
             # SOURCE LINE 84
             __M_writer(unicode(c['suspended_at']))
-            __M_writer(u'</td>\r\n\t\t\t\t\r\n\t\t\t\t<td align="center">\r\n\t\t\t\t\t<input type="button" class="button" value="\u6ce8\u9500" onclick="_do_del(')
+            __M_writer(u'</td>\r\n\t\t\t\t\r\n\t\t\t\t<td align="center">\r\n\t\t\t\t\t<input type="button" class="button" value="\u6ce8\u9500" onclick="_do_del(\'')
             # SOURCE LINE 87
             __M_writer(unicode(cn))
-            __M_writer(u')"  />  \r\n\t\t\t\t\t<input type="button" class="button" value="\u6fc0\u6d3b" />\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n')
+            __M_writer(u'\')" \t  />  \r\n\t\t\t\t\t<input type="button" class="button" value="\u6fc0\u6d3b" />\r\n\t\t\t\t</td>\r\n\t\t\t</tr>\r\n')
             pass
         # SOURCE LINE 92
         __M_writer(u'\t\t\t<br>\r\n\t\t</tbody>\r\n\t</table>\r\n</div>\r\n<div>\r\n\t\t\t\u7b2c ')
