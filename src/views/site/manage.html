@@ -23,7 +23,7 @@ import time
 		<tr>
 			<td><label for="cname" class="label">客户名称:</label></td>
 			<td>
-				<input type="text" id="cname" name="cname" value="${cname}"/>
+				<input type="text" id="cname" name="cname" value="${cname}" />
 			</td>
 			<td><label for="status" class="status">状态:</label></td>
 			<td>
@@ -84,6 +84,7 @@ import time
 				<td>${c['suspended_at']}</td>
 				
 				<td align="center">
+
 					<input type="button" class="button" value="注销" onclick="_do_del('${cn}')" 	  />  
 					<input type="button" class="button" value="激活" />
 				</td>
