@@ -3,9 +3,10 @@ from mako import runtime, filters, cache
 UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
-_magic_number = 7
-_modified_time = 1346904476.602793
-_template_filename = '/Users/zongzong/Documents/workspace/kds/src/views/account/pwdchange.html'
+_magic_number = 8
+_modified_time = 1347438852.796
+_enable_loop = True
+_template_filename = 'E:\\workspacePY\\let\\src/views/account/pwdchange.html'
 _template_uri = '/account/pwdchange.html'
 _source_encoding = 'utf-8'
 from views.filters import Filters, Cycler
@@ -23,8 +24,8 @@ def _mako_generate_namespaces(context):
 def _mako_inherit(template, context):
     _mako_generate_namespaces(context)
     return runtime._inherit_from(context, u'/layouts/content.html', _template_uri)
-def render_body(context, **pageargs):
-    context.caller_stack._push_frame()
+def render_body(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         __M_writer = context.writer()
@@ -36,7 +37,7 @@ def render_body(context, **pageargs):
 
 
 def render_body(context):
-    context.caller_stack._push_frame()
+    __M_caller = context.caller_stack._push_frame()
     try:
         next = context.get('next', UNDEFINED)
         __M_writer = context.writer()

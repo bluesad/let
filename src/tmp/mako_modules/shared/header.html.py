@@ -3,17 +3,18 @@ from mako import runtime, filters, cache
 UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
-_magic_number = 7
-_modified_time = 1347031583.558868
-_template_filename = u'/Users/zongzong/Documents/workspace/mgu/src/views/shared/header.html'
+_magic_number = 8
+_modified_time = 1347416346.328
+_enable_loop = True
+_template_filename = u'E:\\workspacePY\\let\\src/views/shared/header.html'
 _template_uri = u'/shared/header.html'
 _source_encoding = 'utf-8'
 from views.filters import Filters, Cycler
 _exports = []
 
 
-def render_body(context, **pageargs):
-    context.caller_stack._push_frame()
+def render_body(context,**pageargs):
+    __M_caller = context.caller_stack._push_frame()
     try:
         __M_locals = __M_dict_builtin(pageargs=pageargs)
         is_logged_in = context.get('is_logged_in', UNDEFINED)
@@ -31,7 +32,6 @@ def render_body(context, **pageargs):
         else :
             # SOURCE LINE 13
             __M_writer(u'\t\t\t\t<a href="/login">log-in</a>\n')
-            pass
         # SOURCE LINE 15
         __M_writer(u'\t\t</div>\n\t\t<div class="clear"></div>\n\t</div>\n</header>')
         return ''

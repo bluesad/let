@@ -2,10 +2,14 @@
 <%inherit file="/layouts/content.html" />
 
 <%def name="body()">
+
+% if not is_logged_in :
 <div class="form" style="margin:0 auto 0 auto;width: 250px;">
 	<div class="title">
 		请登陆
 	</div>
+	
+	
 	<form action="/login" method="post"> 
 		<input type="hidden" name="next" value="${next}" /> 
 		<div class="field">
@@ -34,5 +38,6 @@
 			<input type="submit" value="Login" class="button"   />
 		</div>
 	</form>
+	% endif
 </div>
 </%def>

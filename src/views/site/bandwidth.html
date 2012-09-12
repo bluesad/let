@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/layouts/content.html" />
+<style>
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+</style>
+<%def name="body()">
+<div class="form" style="margin:0 auto 0 auto;width: 300px;">	
+<form action="/bandwidth" method="post" >
+	<div class="field">
+		<fieldset>
+		    <input type="hidden" id="p_id" name="p_id" value="${p_id}"  class="required"/>	
+		    <label for="cname" class="label">客户名称:</label>
+		     <input type="text" class="cname" name="cname" value="${cname}" class="required"/>	
+		    <br>
+		    <label for="yname" class="label">运营商名称:</label>
+		     <input type="text" class="yname" name="yname" value="${yname}" class="required"/>	
+		     <br>
+			<label for="cname" class="label">增加幅度:</label>
+			<div class="select">
+				<select id="type" name="type" class="required"/>
+				      <option value=100>100</option>
+				      <option value=50>50</option>
+				      <option value=20>20</option>
+				</select>%(单位：百分比)
+			</div>	
+			<label for="begin_at" class="label">开始时间:</label>
+			<div class="input">
+				 <input type="datetime" class="datepicker_date" name="begin_at" class="required"/>	
+			</div>
+			<label for="suspended_at" class="label">结束时间:</label>
+			<div class="input">
+				 <input type="datetime" class="datepicker_date" name="suspended_at" class="required"/>	
+			</div>	
+			<div class="buttons">
+				<input type="reset" class="button"/>
+				<input type="submit" class="button" value="确定" />
+			</div>
+		</fieldset>
+	</div>
+</form>	
+</div>
+</%def> 

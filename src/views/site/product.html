@@ -17,13 +17,16 @@ import time
 	<table>
 			<tbody>
 				<tr>
-				    <th align="center">编号</th>
-					<th align="center">客户名称</th>
-					<th align="center">描述</th>
-					<th align="center">状态</th>
-					<th align="center">产品带宽</th>
-					<th align="center">注册时间</th>
-					<th align="center">操作</th>								
+					<th align="center">编号</th>
+				    <th align="center">客户名称</th>
+				    <th align="center">客户地址</th>
+				    <th align="center">客户电话</th>
+				    <th align="center">状态</th>
+				    <th align="center">产品带宽</th>
+				    <th align="center">注册时间</th>
+				    <th align="center">起始ip</th>
+				    <th align="center">结束ip</th>
+				    <th align="center">操作</th>								
 				</tr>
 			    % for c in paginator.page:
 				<% i=1 %>
@@ -32,7 +35,8 @@ import time
 				    <td align="center">${i}</td>
 				    <% i=i+1 %>
 					<td>${c['cname']}</td>
-					<td>${c['description']}</td>
+					<td>${c['address']}</td>
+					<td>${c['phonenum']}</td>
 					<td>
 					    % if c['status']==0: 
 					          激活
@@ -43,6 +47,8 @@ import time
 					<td align="right" >${c['ctype']}M</td>
 					<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
 					<td>${ct}</td>
+					<td>${c['begin_ip']}</td>
+					<td>${c['suspended_ip']}</td>
 					<td align="center"><input type="button" class="button" value="操作" /></td>
 				</tr>
 		        % endfor

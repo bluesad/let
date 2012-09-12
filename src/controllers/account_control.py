@@ -13,7 +13,7 @@ class IndexHandler(BaseHandler):
         #template context variables go in here
         template_values = {}
         
-        self.render_template('/site/index.html', **template_values)
+        self.render_template('/account/login.html', **template_values)
 
 
 @route('/logout')     
@@ -75,8 +75,14 @@ class LoginHandler(BaseHandler):
         self.set_current_user(user)
         self.flash.notice = "Welcome, %s" % user._id
         forwardUrl = self.get_argument('next', '/')
-        self.redirect(forwardUrl)
-
+        if user['roletype']==2:
+           self.redirect("/manage")
+        elif user['roletype']==3:
+           self.redirect("/product")  
+        else:  
+           self.redirect("/signup")  
+           
+           
 @route('/asy_login')
 class AsyLoginHandler(BaseHandler):
          

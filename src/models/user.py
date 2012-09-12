@@ -70,7 +70,7 @@ class User(Document):
         if roletype == 1:
             roles.remove('/manage')
             roles.remove('/custorm_add')
-            roles.remove('/manage_mod')
+            roles.remove('/custorm_mod')
             roles.remove('/product')
         elif roletype == 2:
             roles.remove('/signup')
@@ -79,7 +79,7 @@ class User(Document):
             roles.remove('/signup')
             roles.remove('/manage')
             roles.remove('/custorm_add')
-            roles.remove('/manage_mod')
+            roles.remove('/custorm_mod')
         else :
             print 'there is something wrong'
         user.roletype = roletype

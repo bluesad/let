@@ -2,8 +2,25 @@
 <%inherit file="/layouts/content.html" />
 <%def name="body()">
 <script type="text/javascript">
-	function _do_del(cname){
-		alert(cname);
+	function _do_del(c_id){
+	    if(confirm('您确定注销该客户吗？')) 
+		$.ajax({
+			url:'custorm_del?c_id='+c_id,
+			type:'post',			
+			success:success,			
+			statusCode: {
+				404: function() {
+    				alert('page not found');
+  				}
+			},
+			error:function(jqXHR, textStatus, errorThrown){
+				alert(textStatus);
+			}
+		});
+	}
+	
+	function success(){
+	
 	}
 </script>
 
@@ -48,11 +65,15 @@ import time
 			<tr>
 				<th align="center">编号</th>
 				<th align="center">客户名称</th>
-				<th align="center">描述</th>
+				<th align="center">客户地址</th>
+				<th align="center">客户电话</th>
 				<th align="center">状态</th>
-				<th align="center">产品带宽(单位:兆)</th>
-				<th align="center">剩余时间(单位:小时)</th>
-				<th align="center">注册时间</th>	
+				<th align="center">产品带宽</th>
+				<th align="center">剩余时间</th>
+				<th align="center">注册时间</th>
+				<th align="center">起始ip</th>
+				<th align="center">结束ip</th>
+				<th align="center">价格</th>
 				<th align="center">使用起始</th>
 				<th align="center">使用结束</th>
 				<th align="center">操作</th>				
@@ -62,30 +83,33 @@ import time
 			<tr>
 				<td align="center">${i}</td>
 				<% i=i+1 %>
-				
-			 
 				<td>${c['cname']}</td>
-				<td>${c['description']}</td>
+				<td>${c['address']}</td>
+			    <td>${c['phonenum']}</td>
 				<td>
 					% if c['status']==1: 
-						  未激活
+						  注销
 					% else: 
 						  激活
 					% endif
 				</td>
 				 
-				<td align="right" >${c['ctype']}</td>
+				<td align="right" >${c['ctype']}M</td>
 				<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
 				<%cn=c['cname'] %>
-				<td align="right">${c['continue_to']}</td>
-				<td>${ct}</td>
+				<td align="right">${c['continue_to']}h</td>
+				<td>${ct}</td>	
 				
+				<td>${c['begin_ip']}</td>
+				<td>${c['suspended_ip']}</td>
+				
+				<td>${c['price']}</td>
 				<td>${c['begin_at']}</td>
 				<td>${c['suspended_at']}</td>
 				
 				<td align="center">
 
-					<input type="button" class="button" value="注销" onclick="_do_del('${cn}')" 	  />  
+					<input type="button" class="button" value="注销" onclick="_do_del('${c['_id']}')" 	  />  
 					<input type="button" class="button" value="激活" />
 				</td>
 			</tr>
