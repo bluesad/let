@@ -56,8 +56,8 @@ class AdminHandler(BaseHandler):
 @route('/signup')
 class SignupHandler(BaseHandler):
     
-    @authenticated
-    @role_required('/signup')
+#    @authenticated
+#    @role_required('/signup')
     def get(self):
         template_values = {}
         template_values['next'] = self.get_argument('next', '/')
@@ -66,8 +66,8 @@ class SignupHandler(BaseHandler):
     
     
     
-    @authenticated
-    @role_required('/signup')
+#    @authenticated
+#    @role_required('/signup')
     def post(self):
         username = self.get_argument("username", None)
         password = self.get_argument("password", None)
