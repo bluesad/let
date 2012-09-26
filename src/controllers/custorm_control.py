@@ -12,6 +12,9 @@ from views.decorators import role_required
 from models.product import Product
 from models.bandwidth import Bandwidth
 from views.paginator import Paginator
+import json  
+import client.henlian as henlian
+  
   
 @route('/product')
 class ProductHandler(BaseHandler):
@@ -49,6 +52,7 @@ class BandwidthHandler(BaseHandler):
         template_values['cname'] = product['cname'] 
         template_values['next'] = self.get_argument('next', '/')     
         self.render_template('/site/bandwidth.html', **template_values)
+
         
     def post(self):
         cname = self.get_argument("cname", None)
@@ -58,4 +62,27 @@ class BandwidthHandler(BaseHandler):
         suspended_at = self.get_argument("suspended_at", None)
         p_id = self.get_argument("p_id", None)
         Bandwidth.insert(cname,yname,p_id,percent,begin_at,suspended_at)
+        
+        if yname == '':
+             henlian.control_bandwidth(host, port, user, password, id, bandwidth)
+     
         self.finish("finished<script>parent.closeDialog();</script>")  
+        
+         
+@route('/bandwidthlog')
+class BwLogHandler(BaseHandler):
+    
+    def get(self):
+        template_values = {}
+        p_id = self.get_argument("p_id", None)
+        bandwidths = Bandwidth.getBwLogs(p_id)
+        print json.dumps(bandwidths)  
+        self.finish(json.dumps(bandwidths))  
+      
+        
+    def post(self):
+        template_values = {}
+        p_id = self.get_argument("p_id", None)
+        bandwidths = Bandwidth.getBwLogs(p_id)
+        print json.dumps(bandwidths)  
+        self.finish(json.dumps(bandwidths))  

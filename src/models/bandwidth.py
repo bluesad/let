@@ -34,6 +34,7 @@ class Bandwidth(Document):
     @staticmethod
     def getBwLogs(p_id):
         return [u for u in Mongo.db.ui.bandwidths.find({'p_id' : uuid.UUID(p_id)})]
+
     
     @staticmethod
     def insert(cname,yname,p_id,percent,begin_at,suspended_at):

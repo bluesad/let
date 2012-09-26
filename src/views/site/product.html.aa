@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+<%inherit file="/layouts/content.html" />
+<%def name="body()">
+
+<%! 
+import time
+    %>
+<div id="page-header">
+	<div class="title">
+		运营商管理界面
+	</div>
+	<div class="subtitle">
+	    用户信息
+	</div>
+</div>
+<div class="field">
+	<table>
+			<tbody>
+				<tr>
+					<th align="center">编号</th>
+				    <th align="center">客户名称</th>
+				    <th align="center">客户地址</th>
+				    <th align="center">客户电话</th>
+				    <th align="center">状态</th>
+				    <th align="center">产品带宽</th>
+				    <th align="center">注册时间</th>
+				    <th align="center">起始ip</th>
+				    <th align="center">结束ip</th>
+				    <th align="center">操作</th>								
+				</tr>
+			    % for c in paginator.page:
+				<% i=1 %>
+				
+				<tr>
+				    <td align="center">${i}</td>
+				    <% i=i+1 %>
+					<td>${c['cname']}</td>
+					<td>${c['address']}</td>
+					<td>${c['phonenum']}</td>
+					<td>
+					    % if c['status']==0: 
+					          激活
+					    % else: 
+					          注销
+					    % endif
+					</td>
+					<td align="right" >${c['ctype']}M</td>
+					<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
+					<td>${ct}</td>
+					<td>${c['begin_ip']}</td>
+					<td>${c['suspended_ip']}</td>
+					<td align="center"><input type="button" class="button" value="操作" /></td>
+				</tr>
+		        % endfor
+			</tbody>
+	</table>
+</div>
+<div>
+			第 ${paginator.current_page} 页  ｜ 共 ${paginator.page_count}页   
+			
+			<!-- if there is a previous page print a back link -->
+            % if paginator.has_previous:
+                  <a href="${paginator.previous_page_link(request)}"><< back</a>
+            % endif
+
+            <!-- if there is a previous and a next page print a divider -->
+                  % if paginator.has_previous and paginator.has_next:
+                  | 
+            % endif
+
+            <!-- if there is a next page print a next link -->
+            % if paginator.has_next:
+                    <a href="${paginator.next_page_link(request)}">next >></a>
+            % endif
+            </div>
+            
+            
+            
+            
+            
+        
+
+</%def>
