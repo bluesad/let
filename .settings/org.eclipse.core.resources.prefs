@@ -1,5 +1,9 @@
+#Wed Sep 12 21:14:43 GMT+08:00 2012
 eclipse.preferences.version=1
 encoding//src/controllers/manage_control.py=utf-8
+encoding//src/controllers/operater_control.py=utf-8
 encoding//src/util/comeon.py=utf-8
 encoding//src/util/paramMib.py=utf-8
+encoding//src/views/site/bandwidth.html=UTF-8
+encoding//src/views/site/product.html=UTF-8
 encoding/<project>=UTF-8

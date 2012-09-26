@@ -4,9 +4,9 @@ UNDEFINED = runtime.UNDEFINED
 __M_dict_builtin = dict
 __M_locals_builtin = locals
 _magic_number = 8
-_modified_time = 1347441463.171
+_modified_time = 1347451695.873
 _enable_loop = True
-_template_filename = 'E:\\workspacePY\\let\\src/views/site/manage.html'
+_template_filename = 'D:\\ishida\\wwwroot\\workspace\\let\\src/views/site/manage.html'
 _template_uri = '/site/manage.html'
 _source_encoding = 'utf-8'
 from views.filters import Filters, Cycler

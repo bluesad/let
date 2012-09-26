@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from core.bootstrap import Bootstrap    
-import os
+import os#@UnresolvedImport
 
 #main app entry point
 if __name__ == "__main__":

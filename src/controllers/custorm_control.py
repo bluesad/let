@@ -10,7 +10,7 @@ from tornado.web import authenticated
 from views.decorators import route
 from views.decorators import role_required
 from models.product import Product
-from models.user import User
+from models.bandwidth import Bandwidth
 from views.paginator import Paginator
   
 @route('/product')
@@ -42,18 +42,20 @@ class BandwidthHandler(BaseHandler):
     
     def get(self):
         template_values = {}
-        template_values['p_id'] = self.get_argument('p_id', '')
-        template_values['yname'] = self.get_argument('yname', '')
-        template_values['cname'] = self.get_argument('cname', '')
+        p_id = self.get_argument('p_id', '')
+        product = Product.lookup(p_id)
+        template_values['p_id'] = product['_id'] 
+        template_values['yname'] = product['yname']
+        template_values['cname'] = product['cname'] 
         template_values['next'] = self.get_argument('next', '/')     
         self.render_template('/site/bandwidth.html', **template_values)
         
-        
     def post(self):
-        cname = self.get_username()
+        cname = self.get_argument("cname", None)
         yname = self.get_argument("yname", None)
         percent = self.get_argument("percent", None)
         begin_at = self.get_argument("begin_at", None)
         suspended_at = self.get_argument("suspended_at", None)
-        self.finish("finished")
-        
+        p_id = self.get_argument("p_id", None)
+        Bandwidth.insert(cname,yname,p_id,percent,begin_at,suspended_at)
+        self.finish("finished<script>parent.closeDialog();</script>")  

@@ -43,7 +43,8 @@ class LoginHandler(BaseHandler):
             self.redirect("/login")
             return
         
-        pw = hashlib.sha1(password).hexdigest()  
+        pw=password
+#        pw = hashlib.sha1(password).hexdigest()  
         username = User.normalize(username)
         user = User.lookup(username)
         
@@ -75,19 +76,16 @@ class LoginHandler(BaseHandler):
         self.set_current_user(user)
         self.flash.notice = "Welcome, %s" % user._id
         forwardUrl = self.get_argument('next', '/')
-<<<<<<< HEAD
-        if user['roletype']==2:
-           self.redirect("/manage")
-        elif user['roletype']==3:
-           self.redirect("/product")  
-        else:  
-           self.redirect("/signup")  
+#        if user['roletype']==2:
+#           self.redirect("/manage")
+#        elif user['roletype']==3:
+#           self.redirect("/product")  
+#        else:  
+#           self.redirect("/signup")  
            
            
-=======
         self.redirect("/manage")
 
->>>>>>> 2ab7f47f789ac1b13301c8d24199a8d03760b32c
 @route('/asy_login')
 class AsyLoginHandler(BaseHandler):
          
