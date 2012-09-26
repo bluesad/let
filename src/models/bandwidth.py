@@ -14,6 +14,7 @@ import uuid
 class Bandwidth(Document):  
     structure = {
                  '_id':unicode,
+                 'p_id':unicode,
                  'cname':basestring,
                  'yname':basestring,
                  'percent':int,
@@ -31,8 +32,12 @@ class Bandwidth(Document):
         return [u for u in Mongo.db.ui.bandwidths.find({'cname' : cname})]
     
     @staticmethod
-    def insert(cname,yname,percent,begin_at,suspended_at):
-        c = Bandwidth.instance(cname,yname,percent,begin_at,suspended_at)
+    def getBwLogs(p_id):
+        return {'users':[{'cname':u['cname'],'percent':u['percent'],'begin_at':u['begin_at']} for u in Mongo.db.ui.bandwidths.find({'p_id' : p_id})]}
+    
+    @staticmethod
+    def insert(cname,yname,p_id,percent,begin_at,suspended_at):
+        c = Bandwidth.instance(cname,yname,p_id,percent,begin_at,suspended_at)
         Mongo.db.ui['bandwidths'].insert(c)
         
   
@@ -53,5 +58,5 @@ class Bandwidth(Document):
         c.p_id = p_id #custormer's name 1 for alive / 0 for died
         c.percent = percent
         c.begin_at = begin_at
-        c.suspended_at = suspended_at
+        c.suspended_at = suspended_at  
         return c

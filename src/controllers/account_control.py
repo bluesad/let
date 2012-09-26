@@ -75,7 +75,6 @@ class LoginHandler(BaseHandler):
         self.set_current_user(user)
         self.flash.notice = "Welcome, %s" % user._id
         forwardUrl = self.get_argument('next', '/')
-<<<<<<< HEAD
         if user['roletype']==2:
            self.redirect("/manage")
         elif user['roletype']==3:
@@ -84,10 +83,6 @@ class LoginHandler(BaseHandler):
            self.redirect("/signup")  
            
            
-=======
-        self.redirect("/manage")
-
->>>>>>> 2ab7f47f789ac1b13301c8d24199a8d03760b32c
 @route('/asy_login')
 class AsyLoginHandler(BaseHandler):
          
