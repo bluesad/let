@@ -43,8 +43,8 @@ class LoginHandler(BaseHandler):
             self.redirect("/login")
             return
         
-        pw=password
-#        pw = hashlib.sha1(password).hexdigest()  
+#        pw=password
+        pw = hashlib.sha1(password).hexdigest()  
         username = User.normalize(username)
         user = User.lookup(username)
         
@@ -156,6 +156,7 @@ class PasswordChanger(BaseHandler):
     @authenticated
     def post(self):
         pw = hashlib.sha1(self.get_argument("password")).hexdigest()
+#        pw=self.get_argument("password")
         
         if self.get_current_user()['password'] != pw:
             # do something
@@ -175,4 +176,4 @@ class PasswordChanger(BaseHandler):
                                                     '$set' : {'password': password}
                                                     })       
         self.flash.success = "Successfully updated password"
-        self.redirect('/settings')
+        self.redirect('/signup')
