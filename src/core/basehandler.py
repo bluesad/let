@@ -8,11 +8,11 @@ import datetime
 import re, sys, threading, os, httplib, tornado.web
 from urllib import unquote
 from middleware import MiddlewareManager
-from core.log import Log
+from core.log import Log  
 from tornado.web import ErrorHandler
 from tornado import httpclient
 from tornado import ioloop
-from pymongo import *
+
 #from whirlwind.view.paginator import Paginator
 from core import dotdict  
 from db.mongo import Mongo
@@ -248,7 +248,8 @@ class JzErrorHandler(ErrorHandler):
                 f.close()
                 return data
         return "<html><title>%(code)d: %(message)s</title>" \
-                "<body class='bodyErrorPage'>%(code)d: %(message)s</body></html>" % {
+                "<body class='bodyErrorPage'>%(code)d: %(message)s</body>" \
+                "暂时不能为您提供服务,请联系客服人员，谢谢！</html>" % { \
             "code": status_code,
             "message": httplib.responses[status_code],
         }

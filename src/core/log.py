@@ -25,6 +25,7 @@ class Log():
             assert Mongo.db != None, "Logger Exception - you must initialize Mongo first to use DB logging"
             self.destination = 'DB'
 
+
     def message(self, type, message, user='', extended_info=''):
         if self.destination == 'DB':    
             log_data = {

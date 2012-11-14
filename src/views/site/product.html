@@ -1,16 +1,13 @@
 # -*- coding: utf-8 -*-
 <%inherit file="/layouts/content.html" />
 <%def name="body()">
-
-<%! 
-import time
-    %>
+<%! import time %>
 <div id="page-header">
 	<div class="title">
-		运营商管理界面
+		产品管理界面
 	</div>
 	<div class="subtitle">
-	    用户信息
+	    产品信息
 	</div>
 </div>
 <div class="field">
@@ -24,32 +21,12 @@ import time
 				    <th align="center">状态</th>
 				    <th align="center">产品带宽</th>
 				    <th align="center">注册时间</th>
-				    <th align="center">起始ip</th>
-				    <th align="center">结束ip</th>
+				    <!--<th align="center">起始ip</th>
+				    <th align="center">结束ip</th>-->
 				    <th align="center">操作</th>								
 				</tr>
-			
-				<!-- <tr style="cursor:pointer">
-				    <td align="center" >999</td>
-					<td>llll</td>
-					<td>jjjj</td>
-					<td>9999</td>
-					<td>
-					          激活
-					</td>
-					<td align="right" >90M</td>
-					<td>0000</td>
-					<td>kkk</td>
-					<td>222</td>
-					<td align="center">
-						<input type="button" class="button" value="操作" />
-						<input type="hidden" class="cid" value="1" />
-					</td>
-				</tr>  -->
-				
 			    % for c in paginator.page:
 				<% i=1 %>
-				
 				<tr style="cursor:pointer">
 				    <td align="center" >${i}</td>
 				    <% i=i+1 %>
@@ -58,23 +35,22 @@ import time
 					<td>${c['phonenum']}</td>
 					<td>
 					    % if c['status']==0: 
-					          激活
+					              注销
 					    % else: 
-					          注销
+					              激活    
 					    % endif
 					</td>
 					<td align="right" >${c['ctype']}M</td>
 					<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
 					<td>${ct}</td>
-					<td>${c['begin_ip']}</td>
-					<td>${c['suspended_ip']}</td>
 					<td align="center">
+					   % if c['status']==1:
 						<input type="button" class="button" value="操作" />
 						<input type="hidden" class="cid" value="${c['_id']}" />
+					   % endif
 					</td>
 				</tr>
-		        % endfor
-		        
+		        % endfor	        
 		        <tr id="ui-detail-row" >
 		        	<td colspan="10">
 		        		<table id="ui-detail-content">		        			
@@ -86,24 +62,19 @@ import time
 </div>
 <div>
 			第 ${paginator.current_page} 页  ｜ 共 ${paginator.page_count}页   
-			
 			<!-- if there is a previous page print a back link -->
             % if paginator.has_previous:
                   <a href="${paginator.previous_page_link(request)}"><< back</a>
             % endif
-
             <!-- if there is a previous and a next page print a divider -->
                   % if paginator.has_previous and paginator.has_next:
                   | 
             % endif
-
             <!-- if there is a next page print a next link -->
             % if paginator.has_next:
                     <a href="${paginator.next_page_link(request)}">next >></a>
             % endif
-            </div>
-
-
+</div>
 <div id="dialog" title="标题">
 	<iframe src="about:blank" id="sl-product-frame"
 		onresize="this.height=this.contentWindow.document.body.scrollHeight"
@@ -134,29 +105,16 @@ import time
 			$('#sl-product-frame').attr('src','/bandwidth?p_id='+$(this).parent().find('.cid').val());
 			$( "#dialog" ).dialog("open");		
 		});
-		
-	
-	    $('#product tr:gt(0) td:lt(9)').click(function(){
-			//TODO: ajax call
-			//demo
-			//var json={users:[{name:'test'}]};
-			//var tpl='<tr><td>客户名称:</td><td>{0}</td></tr>';
-			//tpl=tpl.format(json.users[0].name);
-			//$('#ui-detail-content').html(tpl);
-			//demo end
-				
-			$.getJSON('/bandwidth?p_id='+$(this).parent().find('.cid').val(), function(json){
-				var tpl='<tr><td>客户名称:</td><td>{0}</td></tr>';
-				tpl=tpl.format(json.users[0].name);
+	    $('#product tr:gt(0) td:lt(9)').click(function(){		
+			$.getJSON('/bandwidthlog?p_id='+$(this).parent().find('.cid').val(), function(json){
+				for (i=0;i<json.users.length;i++){
+				   var tpl =tpl + '<tr><td>客户名称:</td><td>{0}</td><td>百分比:</td><td>{1}</td><td>开始时间:</td><td>{2}</td><td>结束时间:</td><td>{3}</td></tr>';
+				   tpl=tpl.format(json.users[i].cname,json.users[i].percent,json.users[i].begin_at,json.users[i].suspended_at);
+				}
 				$('#ui-detail-content').html(tpl);
 			}); 			
 	    });
-		
-		
 	});
-	
-	
 </script>
-
 </%def>
 

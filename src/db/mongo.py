@@ -11,7 +11,7 @@ from core.singleton import Singleton
     Singleton mongo connection
 '''
 class Mongo(Singleton):
-    
+      
     db = None
     
     '''

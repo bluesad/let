@@ -4,12 +4,10 @@ Created on 2012/2/22
 @author: ishida
 '''
 
-from mongokit import *
+from mongokit import Document
 import datetime
-import hashlib, hmac, base64, re   
-from db.mongo import Mongo
-from tornado import options
-import json
+import hashlib, re   
+from db.mongo import Mongo  
     
 '''
 normalizes a username or email address
@@ -34,6 +32,7 @@ class User(Document):
                  'roles':list,
                  'password':unicode,
                  'roletype':int,
+                 'status':int,
                  'created_at':datetime.datetime,
                  'history' : {
                               'last_login' : datetime.datetime,
@@ -64,8 +63,7 @@ class User(Document):
     def instance(username, password, roletype):
         from views.decorators import route
         username = normalize(username)
-        user = User()
-        
+        user = User()    
         roles = [role[0] for role in route.get_routes()]
         if roletype == 1:
             roles.remove('/manage')
@@ -84,6 +82,7 @@ class User(Document):
             print 'there is something wrong'
         user.roletype = roletype
         user.roles = roles
+        user.status=0
         user['_id'] = username
         user.password = hashlib.sha1(password).hexdigest()
         user.created_at = datetime.datetime.now()

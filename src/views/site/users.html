@@ -7,7 +7,11 @@ import time
     %>
 <div id="page-header">
 	<div class="title">
-		运营商
+	 % if usertype==1:
+		管理员
+	 % else:
+	          运营商
+	 % endif
 	</div>
 	<div class="subtitle">
 	    信息查询
@@ -18,10 +22,10 @@ import time
 			<tbody>
 				<tr>
 				    <th align="center">编号</th>
-				    <th align="center">运营商名称</th>
+				    <th align="center">名称</th>
 					<th align="center">注册日期</th>
-					<th align="center">登陆次数</th>
-					<th align="center">上次登陆时间</th>
+					<th align="center">登录次数</th>
+					<th align="center">上次登录时间</th>
 					<th align="center">操作</th>
 				</tr>
 				<% i=1 %>

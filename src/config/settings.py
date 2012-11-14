@@ -59,3 +59,7 @@ middleware_classes = [
     "core.middleware.session.redis.middleware.SessionMiddleware"  
      #"whirlwind.middleware.session.memcache.middleware.SessionMiddleware"
 ]
+
+telnet_key_dir = '/home/junzhong/keys'
+
+telnet_key_file ="jz_keys"

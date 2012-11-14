@@ -1,29 +1,6 @@
 # -*- coding: utf-8 -*-
 <%inherit file="/layouts/content.html" />
 <%def name="body()">
-<script type="text/javascript">
-	function _do_del(c_id){
-	    if(confirm('您确定注销该客户吗？')) 
-		$.ajax({
-			url:'custorm_del?c_id='+c_id,
-			type:'post',			
-			success:success,			
-			statusCode: {
-				404: function() {
-    				alert('page not found');
-  				}
-			},
-			error:function(jqXHR, textStatus, errorThrown){
-				alert(textStatus);
-			}
-		});
-	}
-	
-	function success(){
-	
-	}
-</script>
-
 <%! 
 import time
     %>
@@ -32,7 +9,7 @@ import time
 		运营商管理界面
 	</div>
 	<div class="subtitle">
-	    用户信息
+	            用户信息
 	</div>
 </div>
 <form action="/manage" method="post" >
@@ -40,17 +17,25 @@ import time
 		<tr>
 			<td><label for="cname" class="label">客户名称:</label></td>
 			<td>
-				<input type="text" id="cname" name="cname" value="${cname}" />
+				<input type="text" id="cname" name="cname" value="${cname or ''}" />
 			</td>
 			<td><label for="status" class="status">状态:</label></td>
 			<td>
 				<select id="status" name ="status">
-				% if status == 0:
-					  <option value=0  selected >激活</option>  
-					  <option value=1 >注销</option> 
-				% else:
-					  <option value=0 > 激活</option>  
-					  <option value=1 selected >注销</option> 
+				% if status is not None and status is not '':
+				   % if int(status) == 0:
+				      <option value='' >全部</option>
+					  <option value=0  selected>注销</option>  
+					  <option value=1 >激活</option>   
+				   % else:
+				      <option value='' >全部</option>
+					  <option value=0 >注销</option>
+					  <option value=1 selected>激活</option> 
+				   % endif	 
+				% else:   
+				      <option value='' selected>全部</option>
+				      <option value=0 >注销</option>
+					  <option value=1 >激活</option> 
 				% endif	  
 				</select>
 			</td>
@@ -71,8 +56,8 @@ import time
 				<th align="center">产品带宽</th>
 				<th align="center">剩余时间</th>
 				<th align="center">注册时间</th>
-				<th align="center">起始ip</th>
-				<th align="center">结束ip</th>
+				<!--<th align="center">起始IP</th>
+				<th align="center">结束IP</th>-->
 				<th align="center">价格</th>
 				<th align="center">使用起始</th>
 				<th align="center">使用结束</th>
@@ -87,33 +72,27 @@ import time
 				<td>${c['address']}</td>
 			    <td>${c['phonenum']}</td>
 				<td>
-					% if c['status']==1: 
+					% if c['status']==0: 
 						  注销
 					% else: 
 						  激活
 					% endif
 				</td>
-				 
 				<td align="right" >${c['ctype']}M</td>
 				<% ct = c['created_at'].strftime("%y-%m-%d %H:%M:%S") %>
 				<%cn=c['cname'] %>
 				<td align="right">${c['continue_to']}h</td>
 				<td>${ct}</td>	
-				
-				<td>${c['begin_ip']}</td>
-				<td>${c['suspended_ip']}</td>
-				
-				<td>${c['price']}</td>
+				<td>${c['price']}元</td>
 				<td>${c['begin_at']}</td>
 				<td>${c['suspended_at']}</td>
-				
+				<input type="hidden" value="${c['_id']}" class="c_id" name="c_id" />
 				<td align="center">
-
-					<input type="button" class="button" value="注销" onclick="_do_del('${c['_id']}')" 	  />  
+					<input type="button" class="button" value="注销" />  
 					<input type="button" class="button" value="激活" />
 				</td>
 			</tr>
-			% endfor
+			% endfor  
 			<br>
 		</tbody>
 	</table>

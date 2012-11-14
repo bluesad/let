@@ -1,5 +1,6 @@
 import sys, os
 from core.log import Log
+from core.schedule_job import Job
 
 class Bootstrap():
     def __init__(self):
@@ -9,7 +10,7 @@ class Bootstrap():
     '''
     make sure the python path is set for this app
     '''
-    def init_path(self):
+    def init_path(self):  
         
         #split the current directory from the parent dirictory path
         parent_dir, dir = os.path.split(sys.path[0])
@@ -18,7 +19,7 @@ class Bootstrap():
         sys.path.insert(0, parent_dir)
     
     def init_logging(self, log):
-        if log == 'db':
+        if log == 'db':  
             Log.create()
         else:
             Log.create('FILE', log)
@@ -72,5 +73,5 @@ class Bootstrap():
     
     @staticmethod
     def run(path):
-       (Bootstrap()).main(path)
+        (Bootstrap()).main(path)
 
