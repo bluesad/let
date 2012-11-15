@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from tornado.web import _unicode  
 from tornado.web import RequestHandler, HTTPError
 from mako.template import Template
