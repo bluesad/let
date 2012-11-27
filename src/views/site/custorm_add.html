@@ -1,31 +1,7 @@
 # -*- coding: utf-8 -*-
 <%inherit file="/layouts/content.html" />
-<style>
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-</style>
+
 <%def name="body()">
-<script type="text/javascript">
-$('#fileTab').tabs({
-		ajaxOptions: {
-			error: function( xhr, status, index, anchor ) {
-				$( anchor.hash ).html("该页无法显示，没法华丽扯淡！" );
-			}
-		},
-		select:function(obj,tab){		
-			var subWeb = document.frames ? document.frames[tab.panel.id].document : document.getElementById(tab.panel.id).contentDocument;
-			switch(tab.panel.id)
-			{
-			case "thisMonth":$(tab.panel).find('iframe').attr('src','/manage');/*$(tab.panel).find('iframe').attr("height",subWeb.body.scrollHeight);*/break;
-			default:$(tab.panel).find('iframe').attr('src','');break;
-			}		
-		}
-	});
-</script>
 <div id="page-header">
 	<div class="title">
 		添加用户界面
@@ -101,5 +77,24 @@ $('#fileTab').tabs({
 	   <div class="pager fr">
        </div>
 </div>
+
+<script type="text/javascript">
+/*$('#fileTab').tabs({
+		ajaxOptions: {
+			error: function( xhr, status, index, anchor ) {
+				$( anchor.hash ).html("该页无法显示，没法华丽扯淡！" );
+			}
+		},
+		select:function(obj,tab){		
+			var subWeb = document.frames ? document.frames[tab.panel.id].document : document.getElementById(tab.panel.id).contentDocument;
+			switch(tab.panel.id)
+			{
+			case "thisMonth":$(tab.panel).find('iframe').attr('src','/manage');
+			//$(tab.panel).find('iframe').attr("height",subWeb.body.scrollHeight);break;
+			default:$(tab.panel).find('iframe').attr('src','');break;
+			}		
+		}
+	});*/
+</script>
 </%def>
 <a href="http://www.jztech.cn" target="new">更多技术支持，欢迎访问君众科技公司网站！</a>   

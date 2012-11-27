@@ -10,10 +10,7 @@ from views.decorators import role_required
 from models.product import Product
 from models.order import Order
 from views.paginator import Paginator
-import json
-from util.amqp_publisher_util import sentMsg    
-
-  
+import json    
   
 @route('/product')
 class ProductHandler(BaseHandler):
@@ -57,9 +54,8 @@ class OrderHandler(BaseHandler):
         percent = self.get_argument("percent", None)
         begin_at = self.get_argument("begin_at", None)  
         suspended_at = self.get_argument("suspended_at", None)
-        p_id = self.get_argument("p_id", None)
+        p_id = self.get_argument("p_id", None)  
         o_id = Order.insert(cname,oname,p_id,percent,begin_at,suspended_at)
-        sentMsg('okokok')
         self.finish("finished<script>parent.closeDialog();</script>")  
          
 @route('/bandwidthlog')
