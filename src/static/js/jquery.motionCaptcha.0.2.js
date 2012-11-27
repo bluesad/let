@@ -64,6 +64,8 @@ jQuery.fn.motionCaptcha || (function($) {
 			// Add canvasWidth and canvasHeight values to context, for Ribbon brush:
 			ctx.canvasWidth = canvasWidth;
 			ctx.canvasHeight = canvasHeight;
+			ctx.strokeStyle="blue";
+			ctx.lineWidth=5;
 			
 			// Set canvas context font and fillStyle:
 			ctx.font = opts.canvasFont;
@@ -108,6 +110,7 @@ jQuery.fn.motionCaptcha || (function($) {
 				$('body').addClass('mc-noselect');
 				
 				// Clear canvas:
+				
 				ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 				
 				// Start brushstroke:
@@ -361,6 +364,8 @@ jQuery.fn.motionCaptcha || (function($) {
 				
 				scope.ctx.lineWidth = brushSize;			
 				scope.ctx.strokeStyle = "rgba(" + strokeColor[0] + ", " + strokeColor[1] + ", " + strokeColor[2] + ", " + 0.06 + ")";
+				scope.ctx.strokeStyle="blue";
+				scope.ctx.lineWidth=5;
 				
 				for ( i = 0; i < scope.painters.length; i++ ) {
 					scope.ctx.beginPath();
