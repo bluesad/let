@@ -43,6 +43,13 @@
 
 	<script type="text/javascript" src="/static/js/jquery.motionCaptcha.0.2.js"></script>
 	<script>
+		window.onload = function(){  
+	        try{  
+	            document.createElement('canvas').getContext('2d');            
+	        }catch(e){  
+	            $('input[type="image"]').attr('disabled',false);
+	        }  
+        }; 
 		$('#login-form').motionCaptcha({
 			action: '#mc-action',
 			divId: '#mc',
@@ -53,6 +60,6 @@
 			successMsg: 'success!',
 			noCanvasMsg: "你tmd能换个浏览器吗？ - try Chrome, FF4, Safari or IE9.",
 			label: '<p>Please draw the shape in the box to submit the form:</p>'
-		});
+		});				
 	</script>
 </%def>

@@ -4,12 +4,14 @@ Created on 2012-8-28
 @author: zongzong
 '''
 from core.basehandler import BaseHandler
-#import hashlib
 from tornado.web import authenticated
 from views.decorators import route
 from views.decorators import role_required
 from models.user import User
-
+from models.exchange import Exchange
+from client.rpc_client import TelnetRpcClient
+from tornado.options import options 
+import json
 
 @route('/get_users')
 class OperatersHandler(BaseHandler):
@@ -61,13 +63,31 @@ class TelnetKeyHandler(BaseHandler):
     
     @authenticated
 #   @role_required('/telnetkey')
-    def post(self):
-        
-        
-                   
+    def post(self):          
         self.flash.success = "Successfully updated password"
         self.redirect('/login')     
         
+@route('/add_exchange')
+class AddExchangeHandler(BaseHandler):
+    
+    @authenticated
+    def get(self):
+        template_values = {}
+        template_values['next'] = self.get_argument('next', '/')
+        self.render_template('/site/exchange.html', **template_values)
+    
+    @authenticated
+    def post(self):  
+        oname = self.get_username()
+        ipAddress = self.get_argument("ipAddress", None)
+        ename = self.get_argument("ename", None)
+        tusername = self.get_argument("tusername", None)
+        tpassword = self.get_argument("tpassword", None)
+        rpc = TelnetRpcClient(options.service_ip)
+        Exchange.insert(ename,oname,ipAddress)
+        response = rpc.call("key_queue",json.dumps({'fileadd':options.telnet_key_dir,'ipadd':ipAddress,'username':tusername,"password":tpassword}))
+        self.redirect("/manage")     
         
- 
+        
+        
         

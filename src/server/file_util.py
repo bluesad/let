@@ -5,23 +5,25 @@ Created on 2012-11-12
 @author: huangchong
 '''
 import os.path
+import json
 
 # for read file
-def read(file_name):
-    path, = os.path.split(file_name)
+def read(pre_file_name):
+    path,name = os.path.split(pre_file_name)
     if not os.path.exists(path):  
         os.mkdir(path)          
-    if not os.path.exists(file_name):  
-        mkfile(file_name)               
-    with open(file_name) as f:
+    if not os.path.exists(pre_file_name):  
+        mkfile(pre_file_name)               
+    with open(pre_file_name) as f:
         return f.readline()
     
 # for write file
-def write(arg,file_path,file_name):
+def write(arg,pre_file_name):
+    file_path, file_name = os.path.split(pre_file_name)
     if not os.path.exists(file_path):  
         os.mkdir(file_path)                 
-    with open(file_path+file_name,"wt") as f:
-        f.write(arg)
+    with open(pre_file_name,"wt") as f:
+        f.write(arg)  
 
 def mkfile(filename, body=None):
     with open(filename, 'w' ) as f:
@@ -42,6 +44,12 @@ def mkfile(filename, body=None):
 #        response = "username or password error!!!"    
 #   
 #print response 
-    
+fileadd ='e:/aa/bbbb.txt'
+b = {}
+if read(fileadd):
+    b = json.loads(read(fileadd))
+b['111'] = ['222', '33333']  
+print json.dumps(b)
+write(json.dumps(b), fileadd)
     
     

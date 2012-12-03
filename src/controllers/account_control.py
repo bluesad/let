@@ -4,7 +4,6 @@ from models.user import User
 import datetime, hashlib 
 from tornado.web import authenticated
 from views.decorators import route  
-
 from tornado.web import asynchronous
 
 @route('/')
@@ -13,7 +12,6 @@ class IndexHandler(BaseHandler):
         #template context variables go in here
         template_values = {}  
         self.render_template('/account/login.html', **template_values)
-
 
 @route('/logout')     
 class LogoutHandler(BaseHandler):
@@ -65,8 +63,9 @@ class LoginHandler(BaseHandler):
         self.session['username'] = user._id
         #check keep_logged_in
 #        print self.get_arguments("keep_logged_in", False)
-#        if self.get_argument("keep_logged_in", False) == "on" :
-        self.session['keep_logged_in'] = True
+        if self.get_argument("keep_logged_in", False) == "on" :
+            self.session['keep_logged_in'] = True
+            
         self.set_current_user(user)
         self.flash.notice = "Welcome, %s" % user._id
         if user['roletype']==2:

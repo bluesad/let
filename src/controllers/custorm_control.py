@@ -59,14 +59,13 @@ class OrderHandler(BaseHandler):
         self.finish("finished<script>parent.closeDialog();</script>")  
          
 @route('/bandwidthlog')
-class OrdersHandler(BaseHandler):  
+class OrderLogsHandler(BaseHandler):  
     
     def get(self):
         p_id = self.get_argument("p_id", None)
         bandwidths = Order.get_orders(p_id)
         self.finish(json.dumps(bandwidths))  
       
-        
     def post(self):
         p_id = self.get_argument("p_id", None)
         bandwidths = Order.get_orders(p_id)  

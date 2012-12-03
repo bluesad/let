@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
+<%def name="body()">
 <style>
+html{font-size:12px; font-family:''Hiragino Sans GB W3; -webkit-font-smoothing:antialiased; overflow:hidden;}
+body,div{font-size:1em; overflow:hidden;}
+span{width:auto; height:auto;}
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
 .ui-timepicker-div dl { text-align: left; }
 .ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
@@ -15,8 +19,7 @@
 <script type="text/javascript" src="/static/js/menu.js"></script>
 <script type="text/javascript" src="/static/js/jquery-ui-timepicker-addon.js"></script>
 <script type="text/javascript" src="/static/js/jquery-ui-sliderAccess.js"></script>
-<%def name="body()">
-<div class="form" style="margin:0 auto 0 auto;width: 300px;">	
+<div class="form" style="margin:0 auto 0 auto; overflow:hidden;">	
 <form action="/bandwidth" method="post" > 
 	<div class="field">
 		<fieldset>
@@ -35,16 +38,12 @@
 			<br>
 			<label for="begin_at" class="label">开始时间:</label>
 			<div class="input">
-				 <input type="datetime" id="begin_at" name="begin_at" class="datepicker_date"/>	
+				 <input type="datetime" id="begin_at" name="begin_at" class="datepicker_date required" required="required"/>	
 			</div>
-			<!--<label for="suspended_at" class="label">结束时间:</label>
+			<label for="suspended_at" class="label">结束时间:</label>
 			<div class="input">
-				 <input type="datetime" id="suspended_at" name="suspended_at" class="datepicker_date"/>	
-			</div>	-->
-			<label for="begin_at" class="label">开始时间:</label>
-			<div class="input">
-				 <input type="datetime" id="begin_at" name="begin_at" class="required"/>	
-			</div>
+				 <input type="datetime" id="suspended_at" name="suspended_at" class="datepicker_date required"/>	
+			</div>			
 			<div class="buttons">
 				<input type="reset" class="button"/>
 				<input type="submit" class="button" value="确定" />

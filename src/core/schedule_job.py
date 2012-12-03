@@ -8,24 +8,37 @@ from client.rpc_client import TelnetRpcClient
 from apscheduler.scheduler import Scheduler
 import json
 import logging
+from tornado.options import options  
 '''
     Singleton
 '''
 logging.basicConfig()
   
 schedudler = Scheduler(daemonic = False) 
+'''
+30min start the job
 
+
+'''
 @schedudler.cron_schedule(minute='00,30')
 def set_bandwidth_job():
     print " [x] Requesting"
     rpc = TelnetRpcClient('211.147.71.42')
     print " [x] Requesting from rpc"
+    
+    
+    Mongo.db.find()
+    
     response = rpc.call(json.dumps({'switch_name':'TelnetManage3560', 
                             "port_name":"e1/0/1", "host":"211.147.71.41", "bandwidth":2}))
     print " [.] Got %r" % (response,)
     print 'set_bandwidth_job start at ', datetime.datetime.now()
 
-@schedudler.cron_schedule(minute='30')
+
+
+
+
+@schedudler.cron_schedule(minute='00,30')
 def setback_bandwidth_job():
     rpc = TelnetRpcClient('211.147.71.42')
     print " [x] Requesting from rpc"

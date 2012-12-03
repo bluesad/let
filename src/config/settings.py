@@ -60,6 +60,7 @@ middleware_classes = [
      #"whirlwind.middleware.session.memcache.middleware.SessionMiddleware"
 ]
 
-telnet_key_dir = '/home/junzhong/keys'
+service_ip='192.168.11.177'
+  
+telnet_key_dir = '/home/junzhong/keys/jz_keys'
 
-telnet_key_file ="jz_keys"

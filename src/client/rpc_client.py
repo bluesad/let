@@ -12,7 +12,7 @@ class TelnetRpcClient(object):
     def __init__(self, host):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
                 host))
-        self.channel = self.connection.channel()
+        self.channel = self.connection.channel()  
 
         result = self.channel.queue_declare(exclusive=True)
         self.callback_queue = result.method.queue
@@ -24,11 +24,11 @@ class TelnetRpcClient(object):
         if self.corr_id == props.correlation_id:
             self.response = body
             
-    def call(self, params):
+    def call(self,routing_key, params):
         self.response = None  
         self.corr_id = str(uuid.uuid4())
-        self.channel.basic_publish(exchange='',
-                                   routing_key='rpc_queue',
+        self.channel.basic_publish(exchange='',  
+                                   routing_key=routing_key,
                                    properties=pika.BasicProperties(
                                          reply_to=self.callback_queue,
                                          correlation_id=self.corr_id,

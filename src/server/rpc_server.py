@@ -18,9 +18,9 @@ channel.queue_declare(queue='rpc_queue')
 def do_command(switch_name, host, port_name, username, password, bandwidth):
     tm = switch_name(host, port_name, username, password, bandwidth)
     tm.set_bandwidth()
-    return {'response_code':'250'}
+    return json.dumps({'response_code':'250'})#成功
     
-def on_request(ch, method, props, body): 
+def on_request(ch, method, props, body):     
     try:
         if read(key_file):
             username, password = json.loads(read(key_file))[localIP]#here is the switch address 
@@ -33,9 +33,9 @@ def on_request(ch, method, props, body):
             response = do_command(switch_name, host, port_name, username, password, bandwidth)
             print "拯救地球 !!!"
         else:
-            response = {'response_code':'4587'} 
+            response = json.dumps({'response_code':'4587'})#密码错
     except:
-            response = {'response_code':'4587'}
+            response = json.dumps({'response_code':'4588'})#操作错
     ch.basic_publish(exchange='',  
                      routing_key=props.reply_to,
                      properties=pika.BasicProperties(correlation_id=\
