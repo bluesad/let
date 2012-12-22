@@ -4,14 +4,12 @@
 <%! 
 import time
     %>
-<div id="page-header">
-	<div class="title">
-		运营商管理界面
+<div class="box">
+	<div class="box-header">
+		<h1>运营商管理界面 - 用户信息</h1>
 	</div>
-	<div class="subtitle">
-	            用户信息
-	</div>
-</div>
+
+	<div class="box-content">
 <form action="/manage" method="post" >
 	<table>		 
 		<tr>
@@ -21,7 +19,7 @@ import time
 			</td>
 			<td><label for="status" class="status">状态:</label></td>
 			<td>
-				<select id="status" name ="status">
+				<select id="status" name ="status" placeholder="City" class="{validate:{required:true}}">
 				% if status is not None and status is not '':
 				   % if int(status) == 0:
 				      <option value='' >全部</option>
@@ -39,14 +37,19 @@ import time
 				% endif	  
 				</select>
 			</td>
-			<td><input type="submit"  class="button" value="查询" /></td>
+			<td><button type="submit" class="button"><span class="ui-icon ui-icon-search"></span>查詢</button></td>
 		</tr>
 	</table>
 </form>
-<br>
-<div class="field">
+</div>
+</div>
+
+
+<div class="box">
+<div class="box-header"></div>
+<div class="box-content">
 	<table>
-		<tbody>
+		<thead>
 			<tr>
 				<th align="center">编号</th>
 				<th align="center">客户名称</th>
@@ -63,6 +66,8 @@ import time
 				<th align="center">使用结束</th>
 				<th align="center">操作</th>				
 			</tr>
+		</thead>
+		<tbody>
 			<% i=1 %>
 			% for c in paginator.page:
 			<tr>
@@ -85,19 +90,17 @@ import time
 				<td>${ct}</td>	
 				<td>${c['price']}元</td>
 				<td>${c['begin_at']}</td>
-				<td>${c['suspended_at']}</td>
-				<input type="hidden" value="${c['_id']}" class="c_id" name="c_id" />
+				<td>${c['suspended_at']}</td>				
 				<td align="center">
-					<input type="button" class="button" value="注销" />  
-					<input type="button" class="button" value="激活" />
+					<input type="hidden" value="${c['_id']}" class="c_id" name="c_id" />
+					<input type="button" class="button small blue" value="激活" />
+					<input type="button" class="button small" value="注销" /> 
 				</td>
 			</tr>
-			% endfor  
-			<br>
+			% endfor			
 		</tbody>
 	</table>
-</div>
-<div>
+
 			第 ${paginator.current_page} 页  ｜ 共 ${paginator.page_count}页   
 			
 			<!-- if there is a previous page print a back link -->
@@ -114,5 +117,6 @@ import time
             % if paginator.has_next:
                     <a href="${paginator.next_page_link(request)}">next >></a>
             % endif
-            </div>
+     </div>
+</div>         
 </%def>

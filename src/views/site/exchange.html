@@ -1,53 +1,34 @@
 # -*- coding: utf-8 -*-  
 <%inherit file="/layouts/content.html" />
-<style>
-.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
-.ui-timepicker-div dl { text-align: left; }
-.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
-.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
-.ui-timepicker-div td { font-size: 90%; }
-.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
-</style>
 <%def name="body()">
-<div id="page-header">
-	<div class="title">
-		交换机管理
+<div class="box">
+	<div class="box-header">
+	        <h1>添加交换机</h1>
 	</div>
-	<div class="subtitle">
-	          添加交换机
-	</div>
-</div>
-<div class="form" style="margin:0 auto 0 auto;width: 300px;">
+
+<div class="box-content">
 <form action="/add_exchange" method="post" >
-	<div class="field">  
-		<fieldset>
+		<p>
 			<label for="ename" class="label">交换机名称:</label>
-			<div class="input">
 				<input type="text" id="ename" name="ename" class="required"/>
-			</div>	
+		</p>
+		<p>
 			<label for="ipAddress" class="label">IP地址:</label>
-			<div class="input">
 				<input type="text" id="ipAddress" name="ipAddress" class="required"/>
-			</div>
+		</p>
+		<p>
 			<label for="tusername" class="label">用户名:</label>
-			<div class="input">
 				<input type="text" id="tusername" name="tusername" class="required"/>
-			</div>
+			</p>
+			<p>
 			<label for="address" class="label">密码:</label>
-			<div class="input">
-				<input type="text" id="tpassword" name="tpassword" class="required"/>
-			</div>	
+				<input type="password" id="tpassword" name="tpassword" class="required"/>
+		</p>	
 			<div class="buttons">
-				<input type="reset" class="button"/>
-				<input type="submit" class="button" value="添加"/>   
+				<input type="submit" class="button blue" value="添加"/>   
+				<input type="reset" class="button" value="重置" />
 			</div>
-		</fieldset>
-	</div>
 </form>
-</div>				
-<div class="tab-footer clear">
-	  <div class="pager fr">
-      </div>
+</div>
 </div>
 </%def>
-<a href="http://www.jztech.cn" target="new">更多技术支持，欢迎访问君众科技公司网站！</a>   
